@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    
+    <!-- Fire icon shape - you can customize this -->
+    <path
+        android:fillColor="#DC2626"
+        android:pathData="M100,20 C80,60 60,80 60,120 C60,160 80,180 100,180 C120,180 140,160 140,120 C140,80 120,60 100,20 Z"/>
+    
+    <!-- Inner flame -->
+    <path
+        android:fillColor="#FCA5A5"
+        android:pathData="M100,40 C90,70 80,85 80,110 C80,135 90,145 100,145 C110,145 120,135 120,110 C120,85 110,70 100,40 Z"/>
+</vector>

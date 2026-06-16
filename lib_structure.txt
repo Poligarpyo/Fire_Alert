@@ -1,0 +1,384 @@
+lib
+├── core
+│   ├── database
+│   │   ├── app_database.dart
+│   │   ├── app_database.g.dart
+│   │   └── database_providers.dart
+│   ├── exceptions
+│   │   ├── dio_error_handler.dart
+│   │   ├── invalid_phone_number_exception.dart
+│   │   ├── network_exceptions.dart
+│   │   ├── no_internet_exception.dart
+│   │   └── request_permissions.dart
+│   ├── geolocator
+│   │   └── get_current_location.dart
+│   ├── logger
+│   │   ├── app_logger.dart
+│   │   └── log_interceptor.dart
+│   ├── provider
+│   │   ├── connectivity_listener_provider.dart
+│   │   ├── connectivity_provider.dart
+│   │   ├── device_id_provider.dart
+│   │   ├── ip_address_provider.dart
+│   │   └── speed_test_provider.dart
+│   ├── result
+│   │   ├── app_failure.dart
+│   │   └── result.dart
+│   ├── services
+│   │   ├── biometric_service.dart
+│   │   ├── connectivity_service.dart
+│   │   ├── device_service.dart
+│   │   ├── google_auth_service.dart
+│   │   ├── google_auth_service.g.dart
+│   │   ├── ip_address_service.dart
+│   │   └── speed_test_service.dart
+│   ├── storage
+│   │   ├── auth_local_datasource_provider.dart
+│   │   └── auth_local_datasource.dart
+│   ├── ui
+│   │   ├── global_loader_provider.dart
+│   │   └── loading_overlay.dart
+│   └── value_objects
+│       └── phone_number.dart
+├── data
+│   ├── app
+│   │   ├── app_initializer.dart
+│   │   └── app_initializer.g.dart
+│   ├── auth
+│   │   └── auth_interceptor.dart
+│   ├── enums
+│   │   ├── auth_status.dart
+│   │   └── connection_quality.dart
+│   ├── models
+│   │   ├── user_model.dart
+│   │   ├── user_model.freezed.dart
+│   │   └── user_model.g.dart
+│   └── repository
+│       ├── network_repository.dart
+│       └── network_repository.g.dart
+├── features
+│   ├── authentication
+│   │   ├── data
+│   │   │   ├── model
+│   │   │   │   ├── account_model.dart
+│   │   │   │   ├── account_model.freezed.dart
+│   │   │   │   └── account_model.g.dart
+│   │   │   ├── repositories
+│   │   │   │   ├── authentication_repository_impl.dart
+│   │   │   │   └── authentication_repository_impl.g.dart
+│   │   │   └── sources
+│   │   │       ├── auth_remote_source.dart
+│   │   │       └── auth_remote_source.g.dart
+│   │   ├── domain
+│   │   │   ├── entities
+│   │   │   │   ├── login
+│   │   │   │   │   ├── login_request.dart
+│   │   │   │   │   ├── login_request.freezed.dart
+│   │   │   │   │   ├── login_request.g.dart
+│   │   │   │   │   ├── login_response.dart
+│   │   │   │   │   ├── login_response.freezed.dart
+│   │   │   │   │   ├── login_response.g.dart
+│   │   │   │   │   ├── phone_auth_request.dart
+│   │   │   │   │   ├── phone_auth_request.freezed.dart
+│   │   │   │   │   ├── phone_auth_request.g.dart
+│   │   │   │   │   └── reset_password_request.dart
+│   │   │   │   └── register
+│   │   │   │       ├── register_request.dart
+│   │   │   │       ├── register_request.freezed.dart
+│   │   │   │       ├── register_request.g.dart
+│   │   │   │       ├── register_response.dart
+│   │   │   │       ├── register_response.freezed.dart
+│   │   │   │       └── register_response.g.dart
+│   │   │   ├── repositories
+│   │   │   │   └── authentication_repository.dart
+│   │   │   └── usecases
+│   │   │       ├── login
+│   │   │       │   ├── biometric_login_usecase.dart
+│   │   │       │   ├── login_usecase.dart
+│   │   │       │   └── login_usecase.g.dart
+│   │   │       ├── register
+│   │   │       │   ├── register_user.dart
+│   │   │       │   ├── register_user.g.dart
+│   │   │       │   ├── verify_phone_usecase.dart
+│   │   │       │   └── verify_phone_usecase.g.dart
+│   │   │       ├── reset_password_usecase.dart
+│   │   │       └── reset_password_usecase.g.dart
+│   │   └── presentation
+│   │       ├── controllers
+│   │       │   ├── auth
+│   │       │   │   ├── auth_controller.dart
+│   │       │   │   └── auth_controller.g.dart
+│   │       │   ├── login
+│   │       │   │   ├── auth_ui_model.dart
+│   │       │   │   ├── auth_ui_model.freezed.dart
+│   │       │   │   ├── auth_ui_model.g.dart
+│   │       │   │   ├── biometric_notifier.dart
+│   │       │   │   ├── google_auth_notifier.dart
+│   │       │   │   ├── google_auth_notifier.freezed.dart
+│   │       │   │   ├── google_auth_notifier.g.dart
+│   │       │   │   ├── login_controller.dart
+│   │       │   │   ├── login_controller.g.dart
+│   │       │   │   ├── reset_password_controller.dart
+│   │       │   │   ├── reset_password_controller.g.dart
+│   │       │   │   ├── reset_password_ui_model.dart
+│   │       │   │   ├── reset_password_ui_model.freezed.dart
+│   │       │   │   └── reset_password_ui_model.g.dart
+│   │       │   ├── register
+│   │       │   │   ├── phone_auth_controller.dart
+│   │       │   │   ├── phone_auth_controller.freezed.dart
+│   │       │   │   ├── phone_auth_controller.g.dart
+│   │       │   │   ├── register_controller.dart
+│   │       │   │   ├── register_controller.g.dart
+│   │       │   │   ├── register_form_notifier.dart
+│   │       │   │   ├── register_form_notifier.g.dart
+│   │       │   │   ├── register_form_state.dart
+│   │       │   │   ├── register_form_state.freezed.dart
+│   │       │   │   ├── register_state.dart
+│   │       │   │   └── register_state.freezed.dart
+│   │       │   └── state
+│   │       ├── providers
+│   │       │   └── google_auth_providers.dart
+│   │       ├── screens
+│   │       │   ├── forgot_password_screen.dart
+│   │       │   ├── login_screen.dart
+│   │       │   └── register_screen.dart
+│   │       └── widgets
+│   │           ├── custom_button.dart
+│   │           ├── custom_text_field.dart
+│   │           ├── login
+│   │           │   └── biometric_login_button.dart
+│   │           └── register
+│   │               ├── register_dialogs.dart
+│   │               ├── register_form_card.dart
+│   │               ├── register_form_fields.dart
+│   │               ├── register_header.dart
+│   │               └── register_terms_row.dart
+│   ├── history_report
+│   │   ├── data
+│   │   │   ├── models
+│   │   │   │   ├── history_report_model.dart
+│   │   │   │   ├── history_report_model.freezed.dart
+│   │   │   │   └── history_report_model.g.dart
+│   │   │   ├── repositories
+│   │   │   │   └── history_report_repository_impl.dart
+│   │   │   └── sources
+│   │   │       └── history_report_remote_source.dart
+│   │   ├── domain
+│   │   │   ├── entities
+│   │   │   │   └── history_report.dart
+│   │   │   ├── repositories
+│   │   │   │   └── history_report_repository.dart
+│   │   │   └── usecases
+│   │   │       └── get_history_reports_usecase.dart
+│   │   └── presentation
+│   │       ├── controllers
+│   │       │   ├── history_report_notifier.dart
+│   │       │   ├── history_report_state.dart
+│   │       │   └── history_report_state.freezed.dart
+│   │       ├── providers
+│   │       │   └── history_report_providers.dart
+│   │       ├── screens
+│   │       │   └── reports_history_page.dart
+│   │       └── widgets
+│   │           ├── filter_section.dart
+│   │           ├── report_card.dart
+│   │           ├── report_shimmer.dart
+│   │           └── reports_list.dart
+│   ├── home
+│   │   └── presentation
+│   │       ├── providers
+│   │       │   └── select_provider.dart
+│   │       ├── screen
+│   │       │   └── home_screen.dart
+│   │       └── widgets
+│   │           ├── dashboard_card.dart
+│   │           ├── header.dart
+│   │           ├── internet_speed_realtime.dart
+│   │           ├── language_tile.dart
+│   │           ├── social_tile_widget.dart
+│   │           └── theme_widget.dart
+│   ├── offline_sms
+│   │   ├── data
+│   │   │   ├── models
+│   │   │   │   ├── offline_sms_model.dart
+│   │   │   │   ├── offline_sms_model.freezed.dart
+│   │   │   │   └── offline_sms_model.g.dart
+│   │   │   ├── repositories
+│   │   │   │   └── offline_sms_repository_impl.dart
+│   │   │   └── sources
+│   │   │       └── offline_sms_remote_source.dart
+│   │   ├── domain
+│   │   │   ├── entities
+│   │   │   │   └── offline_sms.dart
+│   │   │   ├── repositories
+│   │   │   │   └── offline_sms_repository.dart
+│   │   │   └── usecases
+│   │   │       └── set_offline_sms_usecase.dart
+│   │   └── presentation
+│   │       ├── controllers
+│   │       │   └── offline_sms
+│   │       │       ├── notifier.dart
+│   │       │       ├── state.dart
+│   │       │       └── state.freezed.dart
+│   │       ├── providers
+│   │       │   └── offline_sms_providers.dart
+│   │       ├── screens
+│   │       │   ├── offline_sms_screen.dart
+│   │       │   └── telephony
+│   │       │       └── send_emergency_sms.dart
+│   │       └── widgets
+│   │           ├── content.dart
+│   │           ├── header_sms_offline.dart
+│   │           ├── offline_sms_listener.dart
+│   │           └── sync_status_banner.dart
+│   ├── profile
+│   │   ├── data
+│   │   │   ├── models
+│   │   │   │   ├── profile_model.dart
+│   │   │   │   ├── profile_model.freezed.dart
+│   │   │   │   └── profile_model.g.dart
+│   │   │   ├── repositories
+│   │   │   │   ├── profile_repository_impl.dart
+│   │   │   │   └── profile_repository_impl.g.dart
+│   │   │   └── sources
+│   │   │       └── profile_remote_source.dart
+│   │   ├── domain
+│   │   │   ├── entities
+│   │   │   │   └── profile.dart
+│   │   │   ├── repositories
+│   │   │   │   └── profile_repository.dart
+│   │   │   └── usecase
+│   │   │       ├── get_profile_usecase.dart
+│   │   │       └── get_profile_usecase.g.dart
+│   │   └── presentation
+│   │       ├── controllers
+│   │       │   ├── profile_notifier.dart
+│   │       │   ├── profile_state.dart
+│   │       │   └── profile_state.freezed.dart
+│   │       ├── providers
+│   │       │   └── profile_providers.dart
+│   │       ├── screens
+│   │       │   └── profile_screen.dart
+│   │       └── widgets
+│   │           ├── edit_profile_avatar.dart
+│   │           ├── edit_profile_bottom_nav.dart
+│   │           ├── edit_profile_form_field.dart
+│   │           ├── edit_profile_form_validator.dart
+│   │           ├── edit_profile_header.dart
+│   │           ├── edit_profile_info_item.dart
+│   │           ├── edit_profile_menu_item.dart
+│   │           ├── edit_profile_page.dart
+│   │           ├── profile_avatar.dart
+│   │           ├── profile_bottom_nav.dart
+│   │           ├── profile_header_section.dart
+│   │           ├── profile_header.dart
+│   │           ├── profile_info_item.dart
+│   │           └── profile_menu.dart
+│   └── report_incident
+│       ├── data
+│       │   ├── constants
+│       │   │   └── emergency_categories_data.dart
+│       │   ├── models
+│       │   │   ├── report_incident_model.dart
+│       │   │   ├── report_incident_model.freezed.dart
+│       │   │   └── report_incident_model.g.dart
+│       │   ├── repositories
+│       │   │   └── report_incident_repository_impl.dart
+│       │   └── sources
+│       │       └── report_incident_firebase_source.dart
+│       ├── domain
+│       │   ├── entities
+│       │   │   ├── emergency_category.dart
+│       │   │   └── report_incident.dart
+│       │   ├── repositories
+│       │   │   └── report_incident_repository.dart
+│       │   └── usecases
+│       │       └── send_report_incident_usecase.dart
+│       └── presentation
+│           ├── controllers
+│           │   └── report_incident
+│           │       ├── notifier.dart
+│           │       ├── state.dart
+│           │       └── state.freezed.dart
+│           ├── providers
+│           │   └── report_incident_providers.dart
+│           ├── screens
+│           │   └── report_incident_screen.dart
+│           └── widgets
+│               ├── additional_details_section.dart
+│               ├── capture_photo_section.dart
+│               ├── custom_bottom_navigation.dart
+│               ├── emergency_category_ui.dart
+│               ├── gps_container_section.dart
+│               ├── incident_type_section.dart
+│               ├── report_header.dart
+│               ├── report_incident_listener.dart
+│               ├── send_button.dart
+│               ├── severity_section.dart
+│               └── shimmer
+│                   └── shimmer_loading_widget.dart
+├── firebase_options.dart
+├── hive
+│   ├── hive_adapters.dart
+│   ├── hive_adapters.g.dart
+│   ├── hive_adapters.g.yaml
+│   ├── hive_registrar.g.dart
+│   └── hive.dart
+├── main.dart
+├── my_app.dart
+├── shared
+│   ├── common
+│   │   ├── app_bar_gone.dart
+│   │   ├── app_snackbar.dart
+│   │   ├── connectivity_listener.dart
+│   │   ├── grid_item.dart
+│   │   ├── link_card.dart
+│   │   ├── logout_confimation.dart
+│   │   └── navigation_keys.dart
+│   ├── config
+│   │   └── theme
+│   │       ├── theme_logic.dart
+│   │       ├── theme_logic.g.dart
+│   │       ├── theme_ui_model.dart
+│   │       ├── theme_ui_model.freezed.dart
+│   │       └── theme_ui_model.g.dart
+│   ├── constants
+│   │   ├── app_colors.dart
+│   │   ├── app_router.dart
+│   │   ├── app_router.g.dart
+│   │   ├── assets.dart
+│   │   ├── dio_helper.dart
+│   │   ├── endpoints.dart
+│   │   ├── fade_extension.dart
+│   │   ├── sg_route.dart
+│   │   ├── slide_extension.dart
+│   │   └── strings.dart
+│   ├── helper
+│   │   ├── error_text.dart
+│   │   ├── field_label.dart
+│   │   ├── field_wrapper.dart
+│   │   ├── hash_password.dart
+│   │   └── offline_screen.dart
+│   ├── theme
+│   │   └── app_theme.dart
+│   └── widgets
+│       ├── about_page.dart
+│       ├── app_button.dart
+│       ├── backup
+│       │   └── offline_sms_dialog.dart
+│       ├── custom_text_area_field.dart
+│       ├── custom_text_form_field.dart
+│       ├── error_modal.dart
+│       ├── offline_sms_dialog.dart
+│       ├── primary_loading_button.dart
+│       ├── privacy_policy_page.dart
+│       ├── privacy_screen.dart
+│       ├── splash_screen.dart
+│       ├── terms_and_conditions_page.dart
+│       └── terms_screen.dart
+└── utils
+    ├── cachefor_extension.dart
+    ├── context_extensions.dart
+    └── url_utils.dart
+
+120 directories, 262 files
